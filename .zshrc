@@ -7,6 +7,22 @@ export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
 ### SET FZF DEFAULTS
 export FZF_DEFAULT_OPTS="--layout=reverse --exact --border=bold --border=rounded --margin=3% --color=dark"
 
+
+# Load local exports and secrets
+
+export EXPORTS_DIR="$HOME/.config/exports" 
+
+load_exports() {
+    if [ -d "$EXPORTS_DIR" ]; then
+        # Only source files that exist and are readable
+        for export_file in "$EXPORTS_DIR"/*; do
+            if [ -f "$export_file" ] && [ -r "$export_file" ]; then
+                source "$export_file"
+            fi
+        done
+    fi
+}
+
 ### "nvim" as manpager
 # export MANPAGER="nvim +Man!"
 
@@ -144,10 +160,13 @@ alias free='free -m'           # show sizes in MB
 alias grep='grep --color=auto' # colorize output (good for log files)
 
 # ps
-alias psa="ps auxf"
-alias psgrep="ps aux | grep -v grep | grep -i -e VSZ -e"
+alias psa='ps auxf'
+alias psgrep='ps aux | grep -v grep | grep -i -e VSZ -e'
 alias psmem='ps auxf | sort -nr -k 4'
 alias pscpu='ps auxf | sort -nr -k 3'
+
+# bat
+alias cat='bat'
 
 # bun completions
 [ -s "/home/sramazzina/.bun/_bun" ] && source "/home/sramazzina/.bun/_bun"
@@ -156,8 +175,8 @@ alias pscpu='ps auxf | sort -nr -k 3'
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-# Pi
-export PATH="/home/sramazzina/.local/share/pi-node/node-v22.22.3-linux-x64/bin:$PATH"
+# Load installation specific exports
+load_exports
 
 # THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
