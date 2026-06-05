@@ -11,6 +11,9 @@ Minimum code that solves the problem. Nothing speculative. No features beyond wh
 Touch only what you must. Clean up only your own mess. Don't "improve" adjacent code, comments, or formatting. Don't refactor what isn't broken. Match existing style.
 ## Rule 4 — Goal-Driven Execution 
 Define success criteria. Loop until verified. Don't follow steps. Define success and iterate. Strong success criteria let you loop independently.
+## Rule 5 — Avoid GPL-licensed code
+Never introduce dependencies, code snippets, or assets covered by **GPL** family licenses (GPLv2, GPLv3, AGPL, LGPL when statically linked, or any copyleft variant whose terms would propagate to Cardine). Before adding any third-party component, verify its license is permissive (Apache 2.0, MIT, BSD, MPL 2.0 file-scope, EPL 2.0, or equivalent). If a candidate is GPL-licensed, surface the constraint and propose a permissive-licensed alternative. When in doubt about a license's compatibility, ask before integrating.
+
 
 # Development Workflow
 ## MANDATORY — Contain CI cost: defer push, batch commits
