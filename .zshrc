@@ -7,7 +7,7 @@ export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
 ### SET FZF DEFAULTS
 export FZF_DEFAULT_OPTS="--layout=reverse --exact --border=bold --border=rounded --margin=3% --color=dark"
 
-
+export PATH="$HOME/.local/bin:$PATH"
 # Load local exports and secrets
 
 export EXPORTS_DIR="$HOME/.config/exports" 
